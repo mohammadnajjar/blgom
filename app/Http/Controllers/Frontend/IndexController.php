@@ -70,13 +70,15 @@ class IndexController extends Controller
 //
 //
 //            ]);
+
+            $userId = auth()->check() ? auth()->id() : null;
             $data['name'] = $request->name;
             $data['email'] = $request->email;
             $data['url'] = $request->url;
             $data['ip_address'] = $request->ip();
             $data['comment'] = Purify::clean($request->comment);
             $data['post_id'] = $post->id;
-            $data['user_id'] = auth()->check() ? auth()->id : null;
+            $data['user_id'] = $userId;
             $post->comments()->create($data);
             return redirect()->back()->with([
                 'message' => 'Commented in successfully.',

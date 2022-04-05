@@ -10,7 +10,9 @@ use App\Models\PostMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Stevebauman\Purify\Facades\Purify;
 
@@ -57,34 +59,38 @@ class UsersController extends Controller
         $data['post_status'] = $request->status;
         $data['category_id'] = $request->category_id;
         $post = auth()->user()->posts()->create($data);
-        if ($request->images && count($request->images) > 0) {
-            $i = 1;
-            foreach ($request->images as $file) {
-                $filename = $post->slug . '-' . time() . '-' . $i . '.' . $file->getClientOriginalExtension();
-                $filesize = $file->getsize();
-                $filetype = $file->getMimeType();
+        if ($post) {
+            if ($request->images && count($request->images) > 0) {
+                $i = 1;
+                foreach ($request->images as $file) {
+                    $filename = $post->slug . '-' . time() . '-' . $i . '.' . $file->getClientOriginalExtension();
+                    $filesize = $file->getsize();
+                    $filetype = $file->getMimeType();
 
-                $path = public_path('/assets/posts/' . $filename);
+                    $path = public_path('/assets/posts/' . $filename);
 
-                Image::make($file->getRealPath())->resize(800, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($path, 100);
+                    Image::make($file->getRealPath())->resize(345, 232, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($path, 100);
 
-                $post->media()->create([
-                    'file_name' => $filename,
-                    'file_size' => $filesize,
-                    'file_type' => $filetype,
-                ]);
-                $i++;
-            }
-            if ($request->status == 1) {
-                Cache::Forget('recent_post');
+                    $post->media()->create([
+                        'file_name' => $filename,
+                        'file_size' => $filesize,
+                        'file_type' => $filetype,
+                    ]);
+                    $i++;
+                }
+                if ($request->status == 1) {
+                    Cache::Forget('recent_post');
+                }
+
             }
             return redirect()->back()->with([
                 'message' => 'Post created successfully.',
                 'alert-type' => 'success'
             ]);
         }
+
         return redirect()->back()->with([
             'message' => 'Something was wrong',
             'alert-type' => 'danger',
@@ -132,7 +138,7 @@ class UsersController extends Controller
                     $file_size = $file->getSize();
                     $file_type = $file->getMimeType();
                     $path = public_path('assets/posts/' . $filename);
-                    Image::make($file->getRealPath())->resize(800, null, function ($constraint) {
+                    Image::make($file->getRealPath())->resize(345, 232, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($path, 100);
 
@@ -259,22 +265,98 @@ class UsersController extends Controller
 
     public function destroy_comment($comment_id)
     {
-        return $comment_id;
         $comment = Comment::whereId($comment_id)->whereHas('post', function ($query) {
             $query->where('posts.user_id', auth()->id());
         })->first();
-        return $comment;
         if ($comment) {
             $comment->delete();
             Cache::Forget('recent_comment');
             return redirect()->back()->with([
-                'message' => 'Comment Updated successfully.',
+                'message' => 'Comment deleted successfully.',
                 'alert-type' => 'success'
             ]);
         }
-        /* return redirect()->back()->with([
-             'message' => 'Something was wrong',
-             'alert-type' => 'danger',
-         ]);*/
+        return redirect()->back()->with([
+            'message' => 'Something was wrong',
+            'alert-type' => 'danger',
+        ]);
+    }
+
+    public function edit_info()
+    {
+        return view('frontend.users.edit_info');
+    }
+
+    public function update_info(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required|numeric',
+            'user_image' => 'nullable|image|max:20000,mimes:jpeg,jpg,png',
+            'bio' => 'nullable|min:20',
+            'recevice_email' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['mobile'] = $request->mobile;
+        $data['recevice_email'] = $request->recevice_email;
+        $data['bio'] = Purify::clean($request->bio);
+        if ($image = $request->file('user_image')) {
+            if (auth()->user()->user_image != '') {
+                if (File::exists('assets/users/' . auth()->user()->user_image)) {
+                    unlink('assets/users/' . auth()->user()->user_image);
+                }
+            }
+            $filename = Str::slug(auth()->user()->username) . '-' . time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('/assets/users/' . $filename);
+            $data['user_image'] = $filename;
+            Image::make($image->getRealPath())->resize(150, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path, 100);
+        }
+        $update = auth()->user()->update($data);
+        if ($update) {
+            return redirect()->back()->with([
+                'message' => 'info Updated successfully.',
+                'alert-type' => 'success'
+            ]);
+        }
+        return redirect()->back()->with([
+            'message' => 'Something was wrong',
+            'alert-type' => 'danger',
+        ]);
+    }
+
+    public function update_password(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $user = auth()->user();
+        if (Hash::check($request->current_password, $user->password)) {
+            $update = $user->update([
+                'password' => bcrypt($request->password),
+            ]);
+        }
+        if ($update) {
+            return redirect()->back()->with([
+                'message' => 'Password Updated successfully.',
+                'alert-type' => 'success'
+            ]);
+        }
+        return redirect()->back()->with([
+            'message' => 'Something was wrong',
+            'alert-type' => 'danger',
+        ]);
     }
 }

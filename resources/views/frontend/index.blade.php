@@ -15,10 +15,10 @@
                                 <div class="thumb">
                                     <a href="{{route('post.show',$post->slug)}}">
                                         @if($post->media->count() > 0)
-                                            <img src="{{asset('assets\posts\ '.$post->media->first())->file_name}}"
-                                                 alt="{{$post->title}}">
+                                            <img src="{{ asset('assets/posts/' . $post->media->first()->file_name) }}"
+                                                 alt="{{ $post->title }}">
                                         @else
-                                            <img src="{{asset('assets\posts\default.jpg')}}" alt="Default image">
+                                            <img src="{{ asset('assets/posts/default.jpg') }}" alt="blog images">
                                         @endif
                                     </a>
                                 </div>

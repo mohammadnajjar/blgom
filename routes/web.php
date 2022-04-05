@@ -40,6 +40,9 @@ Route::group(['middleware' => 'verified'], function () {
     Route::put('/update_comment/{comment_id}', [UsersController::class, 'update_comment'])->name('users.update.comment');
     Route::delete('/delete_post/{comment_id}', [UsersController::class, 'destroy_comment'])->name('users.comment.destroy');
 
+    Route::get('/edit-info', [UsersController::class, 'edit_info'])->name('users.edit.info');
+    Route::post('/update-info/', [UsersController::class, 'update_info'])->name('users.update.info');
+    Route::post('/update-password/', [UsersController::class, 'update_password'])->name('users.update.password');
 
 });
 
