@@ -19,7 +19,7 @@
                                         <div class="carousel-inner">
                                             @foreach($post->media as $media)
                                                 <div class="carousel-item {{$loop->index==0?'active':''}}">
-                                                    <img class="d-block w-100" src="{{asset('assets/posts/0'
+                                                    <img class="d-block w-100" src="{{asset('assets/posts/'
                                                 .$media->file_name)}}"
                                                          alt="{{$post->title}}">
                                                 </div>
@@ -145,8 +145,8 @@
                                         <div class="post-wrapper d-flex">
                                             <div class="thumb">
                                                 <a href="blog-details.html"><img
-                                                            src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
-                                                            alt="blog images"></a>
+                                                        src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
+                                                        alt="blog images"></a>
                                             </div>
                                             <div class="content">
                                                 <h4><a href="blog-details.html">Blog image post</a></h4>
@@ -158,8 +158,8 @@
                                         <div class="post-wrapper d-flex">
                                             <div class="thumb">
                                                 <a href="blog-details.html"><img
-                                                            src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
-                                                            alt="blog images"></a>
+                                                        src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
+                                                        alt="blog images"></a>
                                             </div>
                                             <div class="content">
                                                 <h4><a href="blog-details.html">Post with Gallery</a></h4>
@@ -171,8 +171,8 @@
                                         <div class="post-wrapper d-flex">
                                             <div class="thumb">
                                                 <a href="blog-details.html"><img
-                                                            src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
-                                                            alt="blog images"></a>
+                                                        src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
+                                                        alt="blog images"></a>
                                             </div>
                                             <div class="content">
                                                 <h4><a href="blog-details.html">Post with Video</a></h4>
@@ -184,8 +184,8 @@
                                         <div class="post-wrapper d-flex">
                                             <div class="thumb">
                                                 <a href="blog-details.html"><img
-                                                            src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
-                                                            alt="blog images"></a>
+                                                        src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
+                                                        alt="blog images"></a>
                                             </div>
                                             <div class="content">
                                                 <h4><a href="blog-details.html">Maecenas ultricies</a></h4>
@@ -197,8 +197,8 @@
                                         <div class="post-wrapper d-flex">
                                             <div class="thumb">
                                                 <a href="blog-details.html"><img
-                                                            src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
-                                                            alt="blog images"></a>
+                                                        src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
+                                                        alt="blog images"></a>
                                             </div>
                                             <div class="content">
                                                 <h4><a href="blog-details.html">Blog image post</a></h4>

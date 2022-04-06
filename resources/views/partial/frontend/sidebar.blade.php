@@ -24,8 +24,9 @@
                                 <div class="thumb">
                                     <a href="{{route('post.show',$recent_post->slug)}}">
                                         @if($recent_post->media->count() > 0)
-                                            <img src="{{asset('assets\posts\ '.$recent_post->media->first())->file_name}}"
-                                                 alt="{{$recent_post->title}}">
+                                            <img
+                                                src="{{asset('assets/posts/'.$recent_post->media->first()->file_name)}}"
+                                                alt="{{$recent_post->title}}">
                                         @else
                                             <img src="{{asset('frontend/images/blog/sm-img/1.jpg')}}"
                                                  alt="Default image">
@@ -34,7 +35,7 @@
                                 </div>
                                 <div class="content">
                                     <h4><a href="{{route('post.show',$recent_post->slug)}}
-                                                ">{{Str::limit($recent_post->title,15,'...')}}</a></h4>
+                                            ">{{Str::limit($recent_post->title,15,'...')}}</a></h4>
                                     <p> {{$recent_post->created_at->format('M d Y')}}</p>
                                 </div>
                             </div>

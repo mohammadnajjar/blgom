@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\Post;
 use App\Models\User;
+use App\Notifications\NewCommentForPostOwnerNotify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Stevebauman\Purify\Facades\Purify;
@@ -79,7 +80,13 @@ class IndexController extends Controller
             $data['comment'] = Purify::clean($request->comment);
             $data['post_id'] = $post->id;
             $data['user_id'] = $userId;
-            $post->comments()->create($data);
+            $comment = $post->comments()->create($data);
+            if ($comment) {
+                if (auth()->guest() || auth()->user()->id != $post->user_id) {
+                    $post->user->notify(new NewCommentForPostOwnerNotify($comment));
+
+                }
+            }
             return redirect()->back()->with([
                 'message' => 'Commented in successfully.',
                 'alert-type' => 'success'

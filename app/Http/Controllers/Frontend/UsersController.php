@@ -265,9 +265,11 @@ class UsersController extends Controller
 
     public function destroy_comment($comment_id)
     {
+
         $comment = Comment::whereId($comment_id)->whereHas('post', function ($query) {
             $query->where('posts.user_id', auth()->id());
         })->first();
+   
         if ($comment) {
             $comment->delete();
             Cache::Forget('recent_comment');
