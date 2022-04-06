@@ -9,21 +9,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['zh-TW'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: '單一檔案',
         filePlural: '複選檔案',
         browseLabel: '瀏覽 &hellip;',
@@ -43,8 +32,8 @@
         msgPlaceholder: '選擇 {files} ...',
         msgZoomModalHeading: '內容預覽',
         msgFileRequired: '必須選擇壹個文件上傳.',
-        msgSizeTooSmall: '檔案 "{name}" (<b>{size}</b>) 必須大於限定大小 <b>{minSize}</b>.',
-        msgSizeTooLarge: '檔案 "{name}" (<b>{size}</b>) 大小超過上限 <b>{maxSize}</b>.',
+        msgSizeTooSmall: '檔案 "{name}" (<b>{size} KB</b>) 必須大於限定大小 <b>{minSize} KB</b>.',
+        msgSizeTooLarge: '檔案 "{name}" (<b>{size} KB</b>) 大小超過上限 <b>{maxSize} KB</b>.',
         msgFilesTooLess: '最少必須選擇 <b>{n}</b> {files} 來上傳. ',
         msgFilesTooMany: '上傳的檔案數量 <b>({n})</b> 超過最大檔案上傳限制 <b>{m}</b>.',
         msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
@@ -79,7 +68,6 @@
         msgLoading: '載入第 {index} 個檔案，共 {files} &hellip;',
         msgProgress: '載入第 {index} 個檔案，共 {files} - {name} - {percent}% 成功.',
         msgSelected: '{n} {files} 選取',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: '只支援單檔拖曳! 無法使用 {n} 拖拽的資料夹.',
         msgImageWidthSmall: '圖檔寬度"{name}"必須至少為{size}像素(px).',
         msgImageHeightSmall: '圖檔高度"{name}"必須至少為{size}像素(px).',
@@ -89,7 +77,7 @@
         msgImageResizeException: '錯誤而調整圖像大小。<pre>{errors}</pre>',
         msgAjaxError: '{operation} 發生錯誤. 請重試!',
         msgAjaxProgressError: '{operation} 失敗',
-        msgDuplicateFile: 'File "{name}" of same size "{size}" has already been selected earlier. Skipping duplicate selection.',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
         msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
         msgPendingTime: '{time} remaining',
         msgCalculatingTime: 'calculating time remaining',
@@ -123,4 +111,4 @@
             close: '關閉當前預覽'
         }
     };
-}));
+})(window.jQuery);

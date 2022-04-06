@@ -8,21 +8,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['nl'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'bestand',
         filePlural: 'bestanden',
         browseLabel: 'Zoek &hellip;',
@@ -41,8 +30,8 @@
         msgPlaceholder: 'Selecteer {files} ...',
         msgZoomModalHeading: 'Gedetailleerd voorbeeld',
         msgFileRequired: 'U moet een bestand kiezen om te uploaden.',
-        msgSizeTooSmall: 'Bestand "{name}" (<b>{size}</b>) is te klein en moet groter zijn dan <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Bestand "{name}" (<b>{size}</b>) is groter dan de toegestane <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Bestand "{name}" (<b>{size} KB</b>) is te klein en moet groter zijn dan <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Bestand "{name}" (<b>{size} KB</b>) is groter dan de toegestane <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'U moet minstens <b>{n}</b> {files} selecteren om te uploaden.',
         msgFilesTooMany: 'Aantal geselecteerde bestanden <b>({n})</b> is meer dan de toegestane <b>{m}</b>.',
         msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
@@ -77,7 +66,6 @@
         msgLoading: 'Bestanden laden {index} van de {files} &hellip;',
         msgProgress: 'Bestanden laden {index} van de {files} - {name} - {percent}% compleet.',
         msgSelected: '{n} {files} geselecteerd',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Drag & drop alleen bestanden! {n} overgeslagen map(pen).',
         msgImageWidthSmall: 'Breedte van het foto-bestand "{name}" moet minstens {size} px zijn.',
         msgImageHeightSmall: 'Hoogte van het foto-bestand "{name}" moet minstens {size} px zijn.',
@@ -87,7 +75,7 @@
         msgImageResizeException: 'Fout bij het verkleinen van de foto.<pre>{errors}</pre>',
         msgAjaxError: 'Er ging iets mis met de {operation} actie. Gelieve later opnieuw te proberen!',
         msgAjaxProgressError: '{operation} mislukt',
-        msgDuplicateFile: 'File "{name}" of same size "{size}" has already been selected earlier. Skipping duplicate selection.',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
         msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
         msgPendingTime: '{time} remaining',
         msgCalculatingTime: 'calculating time remaining',
@@ -121,4 +109,4 @@
             close: 'Sluit gedetailleerde weergave'
         }
     };
-}));
+})(window.jQuery);

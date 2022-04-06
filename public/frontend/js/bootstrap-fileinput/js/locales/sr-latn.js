@@ -8,21 +8,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['sr-latn'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'dokument',
         filePlural: 'dokumenti',
         browseLabel: 'Odaberi dokument &hellip;',
@@ -41,8 +30,8 @@
         msgPlaceholder: 'Odaberi {files} ...',
         msgZoomModalHeading: 'Pregled detalja',
         msgFileRequired: 'Obavezan odabir dokumenta za slanje.',
-        msgSizeTooSmall: 'Dokument "{name}" (<b>{size}</b>) mora biti veći od <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Dokument "{name}" (<b>{size}</b>) prelazi maksimalnu dozvoljenu veličinu od <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Dokument "{name}" (<b>{size} KB</b>) mora biti veći od <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Dokument "{name}" (<b>{size} KB</b>) prelazi maksimalnu dozvoljenu veličinu od <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Obavezan odabir minimum <b>{n}</b> dokumenata za slanje.',
         msgFilesTooMany: 'Broj dokumenata odabranih za slanje <b>({n})</b> prelazi maksimalno ograničenje od <b>{m}</b>.',
         msgTotalFilesTooMany: 'Maksimalni broj dokumenata je <b>{m}</b> (<b>{n}</b> je odabrano).',
@@ -77,7 +66,6 @@
         msgLoading: 'Učitavanje dokumenta {index} od {files} &hellip;',
         msgProgress: 'Učitavanje dokumenta {index} od {files} - {name} - {percent}% završeno.',
         msgSelected: '{n} dokumenata odabrano',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Prevlačenje foldera nije dozvoljeno! {n} prevučenih foldera nije dodato.',
         msgImageWidthSmall: 'Širina slike "{name}" mora biti veća od {size} px.',
         msgImageHeightSmall: 'Visina slike "{name}" mora biti veća od {size} px.',
@@ -87,7 +75,7 @@
         msgImageResizeException: 'Greška u promeni veličine slike.<pre>{errors}</pre>',
         msgAjaxError: 'Greška u {operation} operaciji. Molimo pokušajte ponovo kasnije!',
         msgAjaxProgressError: 'Operacija {operation} nije uspela.',
-        msgDuplicateFile: 'Dokument "{name}" iste veličine "{size}" je već selektovan. Duplirani dokument je preskočen.',
+        msgDuplicateFile: 'Dokument "{name}" iste veličine "{size} KB" je već selektovan. Duplirani dokument je preskočen.',
         msgResumableUploadRetriesExceeded:  'Slanje je prekinuto nakon <b>{max}</b> pokušaja za dokument <b>{file}</b>! Detalji greške: <pre>{error}</pre>',
         msgPendingTime: '{time} preostalo',
         msgCalculatingTime: 'računanje preostalog vremena',
@@ -121,4 +109,4 @@
             close: 'Zatvori pregled detalja'
         }
     };
-}));
+})(window.jQuery);

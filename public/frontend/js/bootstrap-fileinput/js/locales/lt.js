@@ -9,21 +9,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['lt'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'failas',
         filePlural: 'failai',
         browseLabel: 'Naršyti &hellip;',
@@ -42,8 +31,8 @@
         msgPlaceholder: 'Select {files} ...',
         msgZoomModalHeading: 'Detali Peržiūra',
         msgFileRequired: 'Pasirinkite failą įkėlimui.',
-        msgSizeTooSmall: 'Failas "{name}" (<b>{size}</b>) yra per mažas ir turi būti didesnis nei <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Failas "{name}" (<b>{size}</b>) viršija maksimalų leidžiamą įkeliamo failo dydį <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Failas "{name}" (<b>{size} KB</b>) yra per mažas ir turi būti didesnis nei <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Failas "{name}" (<b>{size} KB</b>) viršija maksimalų leidžiamą įkeliamo failo dydį <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Turite pasirinkti bent <b>{n}</b> failus įkėlimui.',
         msgFilesTooMany: 'Įkėlimui pasirinktų failų skaičius <b>({n})</b> viršija maksimalų leidžiamą limitą <b>{m}</b>.',
         msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
@@ -87,7 +76,7 @@
         msgImageResizeException: 'Klaida keičiant paveikslėlio matmenis.<pre>{errors}</pre>',
         msgAjaxError: 'Kažkas nutiko vykdant {operation} operaciją. Prašome pabandyti vėliau!',
         msgAjaxProgressError: '{operation} operacija nesėkminga',
-        msgDuplicateFile: 'File "{name}" of same size "{size}" has already been selected earlier. Skipping duplicate selection.',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
         msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
         msgPendingTime: '{time} remaining',
         msgCalculatingTime: 'calculating time remaining',
@@ -120,4 +109,4 @@
             close: 'Uždaryti detalią peržiūrą'
         }
     };
-}));
+})(window.jQuery);

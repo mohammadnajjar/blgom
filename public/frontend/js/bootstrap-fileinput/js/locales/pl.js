@@ -8,21 +8,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['pl'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'plik',
         filePlural: 'pliki',
         browseLabel: 'Przeglądaj &hellip;',
@@ -30,22 +19,22 @@
         removeTitle: 'Usuń zaznaczone pliki',
         cancelLabel: 'Przerwij',
         cancelTitle: 'Anuluj wysyłanie',
-        pauseLabel: 'Wstrzymaj',
-        pauseTitle: 'Wstrzymaj trwające przesyłanie',
+        pauseLabel: 'Pause',
+        pauseTitle: 'Pause ongoing upload',
         uploadLabel: 'Wgraj',
         uploadTitle: 'Wgraj zaznaczone pliki',
         msgNo: 'Nie',
         msgNoFilesSelected: 'Brak zaznaczonych plików',
-        msgPaused: 'Wstrzymano',
+        msgPaused: 'Paused',
         msgCancelled: 'Odwołany',
         msgPlaceholder: 'Wybierz {files} ...',
         msgZoomModalHeading: 'Szczegółowy podgląd',
         msgFileRequired: 'Musisz wybrać plik do wgrania.',
-        msgSizeTooSmall: 'Plik "{name}" (<b>{size}</b>) jest zbyt mały i musi być większy niż <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Plik o nazwie "{name}" (<b>{size}</b>) przekroczył maksymalną dopuszczalną wielkość pliku wynoszącą <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Plik "{name}" (<b>{size} KB</b>) jest zbyt mały i musi być większy niż <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Plik o nazwie "{name}" (<b>{size} KB</b>) przekroczył maksymalną dopuszczalną wielkość pliku wynoszącą <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Minimalna liczba plików do wgrania: <b>{n}</b>.',
         msgFilesTooMany: 'Liczba plików wybranych do wgrania w liczbie <b>({n})</b>, przekracza maksymalny dozwolony limit wynoszący <b>{m}</b>.',
-        msgTotalFilesTooMany: 'Możesz wgrać maksymalnie <b>{m}</b> plików (wykryto <b>{n}</b>).',
+        msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
         msgFileNotFound: 'Plik "{name}" nie istnieje!',
         msgFileSecured: 'Ustawienia zabezpieczeń uniemożliwiają odczyt pliku "{name}".',
         msgFileNotReadable: 'Plik "{name}" nie jest plikiem do odczytu.',
@@ -58,16 +47,15 @@
         msgUploadThreshold: 'Przetwarzanie &hellip;',
         msgUploadBegin: 'Rozpoczynanie &hellip;',
         msgUploadEnd: 'Gotowe!',
-        msgUploadResume: 'Wznawianie przesyłania &hellip;',
+        msgUploadResume: 'Resuming upload &hellip;',
         msgUploadEmpty: 'Brak poprawnych danych do przesłania.',
-        msgUploadError: 'Błąd przesyłania',
-        msgDeleteError: 'Błąd usuwania',
+        msgUploadError: 'Upload Error',
+        msgDeleteError: 'Delete Error',
         msgProgressError: 'Błąd',
         msgValidationError: 'Błąd walidacji',
         msgLoading: 'Wczytywanie pliku {index} z {files} &hellip;',
         msgProgress: 'Wczytywanie pliku {index} z {files} - {name} - {percent}% zakończone.',
         msgSelected: '{n} Plików zaznaczonych',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Metodą przeciągnij i upuść, można przenosić tylko pliki. Pominięto {n} katalogów.',
         msgImageWidthSmall: 'Szerokość pliku obrazu "{name}" musi być co najmniej {size} px.',
         msgImageHeightSmall: 'Wysokość pliku obrazu "{name}" musi być co najmniej {size} px.',
@@ -77,10 +65,10 @@
         msgImageResizeException: 'Błąd podczas zmiany rozmiaru obrazu.<pre>{errors}</pre>',
         msgAjaxError: 'Coś poczło nie tak podczas {operation}. Spróbuj ponownie!',
         msgAjaxProgressError: '{operation} nie powiodło się',
-        msgDuplicateFile: 'Plik "{name}" o identycznym rozmiarze "{size}" został wgrany wcześniej. Pomijanie zduplikowanego pliku.',
-        msgResumableUploadRetriesExceeded:  'Przekroczono limit <b>{max}</b> prób wgrania pliku <b>{file}</b>! Szczegóły błędu: <pre>{error}</pre>',
-        msgPendingTime: 'Pozostało {time}',
-        msgCalculatingTime: 'obliczanie pozostałego czasu',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
+        msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
+        msgPendingTime: '{time} remaining',
+        msgCalculatingTime: 'calculating time remaining',
         ajaxOperations: {
             deleteThumb: 'usuwanie pliku',
             uploadThumb: 'przesyłanie pliku',
@@ -99,7 +87,7 @@
             indicatorNewTitle: 'Jeszcze nie przesłany',
             indicatorSuccessTitle: 'Dodane',
             indicatorErrorTitle: 'Błąd',
-            indicatorPausedTitle: 'Przesyłanie zatrzymane',
+            indicatorPausedTitle: 'Upload Paused',
             indicatorLoadingTitle:  'Przesyłanie &hellip;'
         },
         previewZoomButtonTitles: {
@@ -111,4 +99,4 @@
             close: 'Zamknij szczegółowy widok'
         }
     };
-}));
+})(window.jQuery);

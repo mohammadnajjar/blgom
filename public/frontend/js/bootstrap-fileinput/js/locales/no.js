@@ -8,21 +8,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['no'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'fil',
         filePlural: 'filer',
         browseLabel: 'Bla gjennom &hellip;',
@@ -41,8 +30,8 @@
         msgPlaceholder: 'Select {files} ...',
         msgZoomModalHeading: 'Detaljert visning',
         msgFileRequired: 'You must select a file to upload.',
-        msgSizeTooSmall: 'Filen "{name}" (<b>{size}</b>) er for liten og må være større enn <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Filen "{name}" (<b>{size}</b>) er for stor, maksimal filstørrelse er <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Filen "{name}" (<b>{size} KB</b>) er for liten og må være større enn <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Filen "{name}" (<b>{size} KB</b>) er for stor, maksimal filstørrelse er <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Du må velge minst <b>{n}</b> {files} for opplastning.',
         msgFilesTooMany: 'For mange filer til opplastning, <b>({n})</b> overstiger maksantallet som er <b>{m}</b>.',
         msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
@@ -86,7 +75,7 @@
         msgImageResizeException: 'En feil oppstod under endring av størrelse .<pre>{errors}</pre>',
         msgAjaxError: 'Noe gikk galt med {operation} operasjonen. Vennligst prøv igjen senere!',
         msgAjaxProgressError: '{operation} feilet',
-        msgDuplicateFile: 'File "{name}" of same size "{size}" has already been selected earlier. Skipping duplicate selection.',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
         msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
         msgPendingTime: '{time} remaining',
         msgCalculatingTime: 'calculating time remaining',
@@ -119,4 +108,4 @@
             close: 'Lukk detaljer'
         }
     };
-}));
+})(window.jQuery);

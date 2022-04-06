@@ -8,21 +8,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['pt-BR'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'arquivo',
         filePlural: 'arquivos',
         browseLabel: 'Procurar &hellip;',
@@ -41,8 +30,8 @@
         msgPlaceholder: 'Selecionar {files} ...',
         msgZoomModalHeading: 'Pré-visualização detalhada',
         msgFileRequired: 'Você deve selecionar um arquivo para enviar.',
-        msgSizeTooSmall: 'O arquivo "{name}" (<b>{size}</b>) é muito pequeno e deve ser maior que <b>{minSize}</b>.',
-        msgSizeTooLarge: 'O arquivo "{name}" (<b>{size}</b>) excede o tamanho máximo permitido de <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'O arquivo "{name}" (<b>{size} KB</b>) é muito pequeno e deve ser maior que <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'O arquivo "{name}" (<b>{size} KB</b>) excede o tamanho máximo permitido de <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Você deve selecionar pelo menos <b>{n}</b> {files} para enviar.',
         msgFilesTooMany: 'O número de arquivos selecionados para o envio <b>({n})</b> excede o limite máximo permitido de <b>{m}</b>.',
         msgTotalFilesTooMany: 'Pode enviar no máximo <b>{m}</b> arquivos (<b>{n}</b> arquivos detetados).',
@@ -77,7 +66,6 @@
         msgLoading: 'Enviando arquivo {index} de {files} &hellip;',
         msgProgress: 'Enviando arquivo {index} de {files} - {name} - {percent}% completo.',
         msgSelected: '{n} {files} selecionado(s)',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Arraste e solte apenas arquivos! {n} pasta(s) ignoradas.',
         msgImageWidthSmall: 'Largura do arquivo de imagem "{name}" deve ser pelo menos {size} px.',
         msgImageHeightSmall: 'Altura do arquivo de imagem "{name}" deve ser pelo menos {size} px.',
@@ -87,7 +75,7 @@
         msgImageResizeException: 'Erro ao redimensionar a imagem.<pre>{errors}</pre>',
         msgAjaxError: 'Algo deu errado com a operação {operation}. Por favor tente novamente mais tarde!',
         msgAjaxProgressError: '{operation} falhou',
-        msgDuplicateFile: 'O arquivo "{name}" do mesmo tamanho "{size}" já foi selecionado. Ignorando a seleção duplicada.',
+        msgDuplicateFile: 'O arquivo "{name}" do mesmo tamanho "{size} KB" já foi selecionado. Ignorando a seleção duplicada.',
         msgResumableUploadRetriesExceeded:  'Envio abortado, excedido <b>{max}</b> tentativas para o arquivo <b>{file}</b>! Detalhes do erro: <pre>{error}</pre>',
         msgPendingTime: '{time} restante',
         msgCalculatingTime: 'calculando o tempo restante',
@@ -121,4 +109,4 @@
             close: 'Fechar pré-visualização detalhada'
         }
     };
-}));
+})(window.jQuery);

@@ -8,21 +8,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['pt'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'ficheiro',
         filePlural: 'ficheiros',
         browseLabel: 'Procurar &hellip;',
@@ -41,8 +30,8 @@
         msgPlaceholder: 'Selecionar {files} ...',
         msgZoomModalHeading: 'Pré-visualização detalhada',
         msgFileRequired: 'É necessário selecionar um ficheiro a enviar.',
-        msgSizeTooSmall: 'Ficheiro "{name}" (<b>{size}</b>) é demasiado pequeno, tem ser ser maior que <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Ficheiro "{name}" (<b>{size}</b>) excede o tamanho máximo permido de <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Ficheiro "{name}" (<b>{size} KB</b>) é demasiado pequeno, tem ser ser maior que <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Ficheiro "{name}" (<b>{size} KB</b>) excede o tamanho máximo permido de <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Deve selecionar pelo menos <b>{n}</b> {files} para enviar.',
         msgFilesTooMany: 'Número máximo de ficheiros selecionados <b>({n})</b> excede o limite máximo de <b>{m}</b>.',
         msgTotalFilesTooMany: 'Pode enviar no máximo <b>{m}</b> ficheiros (<b>{n}</b> ficheiros detetados).',
@@ -77,7 +66,6 @@
         msgLoading: 'A enviar ficheiro {index} de {files} &hellip;',
         msgProgress: 'A enviar ficheiro {index} de {files} - {name} - {percent}% completo.',
         msgSelected: '{n} {files} selecionados',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Arrastar e largar ficheiros apenas. {n} pasta(s) ignoradas.',
         msgImageWidthSmall: 'Largura da imagem "{name}" deve ser pelo menos {size} px.',
         msgImageHeightSmall: 'Altura da imagem "{name}" deve ser pelo menos {size} px.',
@@ -87,7 +75,7 @@
         msgImageResizeException: 'Erro ao redimensionar a imagem.<pre>{errors}</pre>',
         msgAjaxError: 'Ocorreu um erro durante a operação {operation}. Por favor tente de novo mais tarde.',
         msgAjaxProgressError: '{operation} falhou',
-        msgDuplicateFile: 'O ficheiro "{name}" com o mesmo tamanho "{size}" já foi anteriormente selecionado. O ficheiro duplicado foi ignorado.',
+        msgDuplicateFile: 'O ficheiro "{name}" com o mesmo tamanho "{size} KB" já foi anteriormente selecionado. O ficheiro duplicado foi ignorado.',
         msgResumableUploadRetriesExceeded: 'O envio foi abortado após <b>{max}</b> tentativas para o ficheiro <b>{file}</b>. Detalhes do erro: <pre>{error}</pre>',
         msgPendingTime: '{time} restante',
         msgCalculatingTime: 'a calcular o tempo restante',
@@ -121,4 +109,4 @@
             close: 'Fechar pré-visualização detalhada'
         }
     };
-}));
+})(window.jQuery);

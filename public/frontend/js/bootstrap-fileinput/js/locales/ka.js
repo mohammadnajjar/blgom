@@ -9,21 +9,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['ka'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'ფაილი',
         filePlural: 'ფაილები',
         browseLabel: 'არჩევა &hellip;',
@@ -42,8 +31,8 @@
         msgPlaceholder: 'აირჩიეთ {files} ...',
         msgZoomModalHeading: 'დეტალურად ნახვა',
         msgFileRequired: 'ატვირთვისთვის აუცილებელია ფაილის არჩევა.',
-        msgSizeTooSmall: 'ფაილი "{name}" (<b>{size}</b>) არის ძალიან პატარა. მისი ზომა უნდა იყოს არანაკლებ <b>{minSize}</b>.',
-        msgSizeTooLarge: 'ფაილი "{name}" (<b>{size}</b>) აჭარბებს მაქსიმალურ დასაშვებ ზომას <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'ფაილი "{name}" (<b>{size} KB</b>) არის ძალიან პატარა. მისი ზომა უნდა იყოს არანაკლებ <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'ფაილი "{name}" (<b>{size} KB</b>) აჭარბებს მაქსიმალურ დასაშვებ ზომას <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'უნდა აირჩიოთ მინიმუმ <b>{n}</b> {file} ატვირთვისთვის.',
         msgFilesTooMany: 'არჩეული ფაილების რაოდენობა <b>({n})</b> აჭარბებს დასაშვებ ლიმიტს <b>{m}</b>.',
         msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
@@ -78,7 +67,6 @@
         msgLoading: 'ატვირთვა {index} / {files} &hellip;',
         msgProgress: 'ფაილის ატვირთვა დასრულებულია {index} / {files} - {name} - {percent}%.',
         msgSelected: 'არჩეულია {n} {file}',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'დაშვებულია მხოლოდ ფაილების გადმოთრევა! გამოტოვებულია {n} გადმოთრეული ფოლდერი.',
         msgImageWidthSmall: 'სურათის "{name}" სიგანე უნდა იყოს არანაკლებ {size} px.',
         msgImageHeightSmall: 'სურათის "{name}" სიმაღლე უნდა იყოს არანაკლებ {size} px.',
@@ -88,7 +76,7 @@
         msgImageResizeException: 'შეცდომა სურათის ზომის შეცვლისას.<pre>{errors}</pre>',
         msgAjaxError: 'დაფიქსირდა შეცდომა ოპერაციის {operation} შესრულებისას. ცადეთ მოგვიანებით!',
         msgAjaxProgressError: 'ვერ მოხერხდა ოპერაციის {operation} შესრულება',
-        msgDuplicateFile: 'File "{name}" of same size "{size}" has already been selected earlier. Skipping duplicate selection.',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
         msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
         msgPendingTime: '{time} remaining',
         msgCalculatingTime: 'calculating time remaining',
@@ -122,4 +110,4 @@
             close: 'დახურვა'
         }
     };
-}));
+})(window.jQuery);

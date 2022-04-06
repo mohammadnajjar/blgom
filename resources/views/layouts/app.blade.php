@@ -26,7 +26,7 @@
     <link href="{{ asset('frontend/js/bootstrap-fileinput/css/fileinput.min.css') }}" media="all" rel="stylesheet"
           type="text/css"/>
 
-
+    <link rel="stylesheet" href="{{asset('frontend/css/custom.css')}}">
     <!-- Modernizer js -->
     <script src="{{ asset('frontend/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 

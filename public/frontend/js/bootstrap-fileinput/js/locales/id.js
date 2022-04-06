@@ -9,21 +9,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['id'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'berkas',
         filePlural: 'berkas',
         browseLabel: 'Pilih berkas &hellip;',
@@ -42,8 +31,8 @@
         msgPlaceholder: 'Pilih {files} ...',
         msgZoomModalHeading: 'Pratinjau terperinci',
         msgFileRequired: 'Anda harus memilih berkas untuk diunggah.',
-        msgSizeTooSmall: 'Berkas "{name}" (<b>{size}</b>) terlalu kecil dan harus lebih besar dari <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Berkas "{name}" (<b>{size}</b>) melebihi ukuran unggah maksimal yaitu <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Berkas "{name}" (<b>{size} KB</b>) terlalu kecil dan harus lebih besar dari <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Berkas "{name}" (<b>{size} KB</b>) melebihi ukuran unggah maksimal yaitu <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Anda harus memilih setidaknya <b>{n}</b> {files} untuk diunggah.',
         msgFilesTooMany: '<b>({n})</b> berkas yang dipilih untuk diunggah melebihi ukuran unggah maksimal yaitu <b>{m}</b>.',
         msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
@@ -78,7 +67,6 @@
         msgLoading: 'Memuat {index} dari {files} berkas &hellip;',
         msgProgress: 'Memuat {index} dari {files} berkas - {name} - {percent}% selesai.',
         msgSelected: '{n} {files} dipilih',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Hanya tahan dan lepas file saja! {n} folder diabaikan.',
         msgImageWidthSmall: 'Lebar dari gambar "{name}" harus sekurangnya {size} px.',
         msgImageHeightSmall: 'Tinggi dari gambar "{name}" harus sekurangnya {size} px.',
@@ -88,7 +76,7 @@
         msgImageResizeException: 'Kesalahan saat mengubah ukuran gambar.<pre>{errors}</pre>',
         msgAjaxError: 'Terjadi kesalahan ketika melakukan operasi {operation}. Silahkan coba lagi nanti!',
         msgAjaxProgressError: '{operation} gagal',
-        msgDuplicateFile: 'File "{name}" of same size "{size}" has already been selected earlier. Skipping duplicate selection.',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
         msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
         msgPendingTime: '{time} remaining',
         msgCalculatingTime: 'calculating time remaining',
@@ -122,4 +110,4 @@
             close: 'Tutup pratinjau terperinci'
         }
     };
-}));
+})(window.jQuery);

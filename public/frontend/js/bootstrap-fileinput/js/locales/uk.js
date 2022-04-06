@@ -9,44 +9,33 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['uk'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'файл',
         filePlural: 'файли',
-        browseLabel: 'Обрати &hellip;',
+        browseLabel: 'Вибрати &hellip;',
         removeLabel: 'Видалити',
         removeTitle: 'Видалити вибрані файли',
         cancelLabel: 'Скасувати',
         cancelTitle: 'Скасувати поточне відвантаження',
-        pauseLabel: 'Призупинити',
-        pauseTitle: 'Призупинити поточне відвантаження',
+        pauseLabel: 'Pause',
+        pauseTitle: 'Pause ongoing upload',
         uploadLabel: 'Відвантажити',
         uploadTitle: 'Відвантажити обрані файли',
         msgNo: 'Немає',
         msgNoFilesSelected: '',
-        msgPaused: 'Призупинено',
-        msgCancelled: 'Скасовано',
+        msgPaused: 'Paused',
+        msgCancelled: 'Cкасовано',
         msgPlaceholder: 'Оберіть {files} ...',
-        msgZoomModalHeading: 'Детальний перегляд',
+        msgZoomModalHeading: 'Детальний превью',
         msgFileRequired: 'Ви повинні обрати файл для завантаження.',
-        msgSizeTooSmall: 'Файл "{name}" (<b>{size}</b>) занадто малий і повинен бути більший, ніж <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Файл "{name}" (<b>{size}</b>) перевищує максимальний розмір <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Файл "{name}" (<b>{size} KB</b>) занадто малий і повинен бути більший, ніж <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Файл "{name}" (<b>{size} KB</b>) перевищує максимальний розмір <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Ви повинні обрати як мінімум <b>{n}</b> {files} для відвантаження.',
         msgFilesTooMany: 'Кількість обраних файлів <b>({n})</b> перевищує максимально допустиму кількість <b>{m}</b>.',
-        msgTotalFilesTooMany: 'Ви можете відвантажити максимум <b>{m}</b> файл(ів) (<b>{n}</b> файл(ів) обрано).',
+        msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
         msgFileNotFound: 'Файл "{name}" не знайдено!',
         msgFileSecured: 'Обмеження безпеки перешкоджають читанню файла "{name}".',
         msgFileNotReadable: 'Файл "{name}" неможливо прочитати.',
@@ -65,41 +54,40 @@
             'pdf': 'PDF',
             'object': 'object'
         },
-        msgUploadAborted: 'Вивантаження файлу перервано',
+        msgUploadAborted: 'Вивантаження файлу перервана',
         msgUploadThreshold: 'Обробка &hellip;',
         msgUploadBegin: 'Ініціалізація &hellip;',
         msgUploadEnd: 'Готово',
-        msgUploadResume: 'Продовжити відвантаження &hellip;',
+        msgUploadResume: 'Resuming upload &hellip;',
         msgUploadEmpty: 'Немає доступних даних для відвантаження.',
-        msgUploadError: 'Помилка відвантаження',
-        msgDeleteError: 'Помилка видалення',
+        msgUploadError: 'Upload Error',
+        msgDeleteError: 'Delete Error',
         msgProgressError: 'Помилка',
         msgValidationError: 'Помилка перевірки',
         msgLoading: 'Відвантаження файла {index} із {files} &hellip;',
         msgProgress: 'Відвантаження файла {index} із {files} - {name} - {percent}% завершено.',
         msgSelected: '{n} {files} обрано',
-        msgProcessing: 'Processing ...',
-        msgFoldersNotAllowed: 'Дозволено перетягувати тільки файли! Пропущено {n} тек.',
+        msgFoldersNotAllowed: 'Дозволено перетягувати тільки файли! Пропущено {n} папок.',
         msgImageWidthSmall: 'Ширина зображення "{name}" повинна бути не менше {size} px.',
         msgImageHeightSmall: 'Висота зображення "{name}" повинна бути не менше {size} px.',
         msgImageWidthLarge: 'Ширина зображення "{name}" не може перевищувати {size} px.',
         msgImageHeightLarge: 'Висота зображення "{name}" не може перевищувати {size} px.',
-        msgImageResizeError: 'Не вдалося отримати розміри зображення, щоб змінити розмір.',
+        msgImageResizeError: 'Не вдалося розміри зображення, щоб змінити розмір.',
         msgImageResizeException: 'Помилка при зміні розміру зображення.<pre>{errors}</pre>',
-        msgAjaxError: 'Щось не так з операцією {operation}. Будь ласка, спробуйте пізніше!',
+        msgAjaxError: 'Щось не так із операцією {operation}. Будь ласка, спробуйте пізніше!',
         msgAjaxProgressError: 'помилка {operation}',
-        msgDuplicateFile: 'Файл "{name}" з розміром "{size}" вже був обраний раніше. Пропуск повторюваного вибору.',
-        msgResumableUploadRetriesExceeded:  'Відвантаження перерване після <b>{max}</b> спроб для файлу <b>{file}</b>! Інформація про помилку: <pre>{error}</pre>',
-        msgPendingTime: '{time} залишилося',
-        msgCalculatingTime: 'розрахунок часу, який залишився',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
+        msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
+        msgPendingTime: '{time} remaining',
+        msgCalculatingTime: 'calculating time remaining',
         ajaxOperations: {
-            deleteThumb: 'видалення файла',
-            uploadThumb: 'відвантаження файла',
-            uploadBatch: 'пакетне відвантаження файлів',
-            uploadExtra: 'відвантаження даних з форми'
+            deleteThumb: 'видалити файл',
+            uploadThumb: 'відвантажити файл',
+            uploadBatch: 'batch file upload',
+            uploadExtra: 'form data upload'
         },
         dropZoneTitle: 'Перетягніть файли сюди &hellip;',
-        dropZoneClickTitle: '<br>(або натисніть та оберіть {files})',
+        dropZoneClickTitle: '<br>(або клацність та оберіть {files})',
         fileActionSettings: {
             removeTitle: 'Видалити файл',
             uploadTitle: 'Відвантажити файл',
@@ -110,7 +98,7 @@
             indicatorNewTitle: 'Ще не відвантажено',
             indicatorSuccessTitle: 'Відвантажено',
             indicatorErrorTitle: 'Помилка при відвантаженні',
-            indicatorPausedTitle: 'Відвантаження призупинено',
+            indicatorPausedTitle: 'Upload Paused',
             indicatorLoadingTitle:  'Завантаження &hellip;'
         },
         previewZoomButtonTitles: {
@@ -122,4 +110,4 @@
             close: 'Закрити детальний перегляд'
         }
     };
-}));
+})(window.jQuery);

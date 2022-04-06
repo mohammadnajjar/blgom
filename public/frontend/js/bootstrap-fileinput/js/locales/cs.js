@@ -8,21 +8,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['cs'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'soubor',
         filePlural: 'soubory',
         browseLabel: 'Vybrat &hellip;',
@@ -41,8 +30,8 @@
         msgPlaceholder: 'Vybrat {files} ...',
         msgZoomModalHeading: 'Detailní náhled',
         msgFileRequired: 'Musíte vybrat soubor, který chcete nahrát.',
-        msgSizeTooSmall: 'Soubor "{name}" (<b>{size}</b>) je příliš malý, musí mít velikost nejméně <b>{minSize}</b>.',
-        msgSizeTooLarge: 'Soubor "{name}" (<b>{size}</b>) je příliš velký, maximální povolená velikost <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'Soubor "{name}" (<b>{size} KB</b>) je příliš malý, musí mít velikost nejméně <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'Soubor "{name}" (<b>{size} KB</b>) je příliš velký, maximální povolená velikost <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Musíte vybrat nejméně <b>{n}</b> {files} souborů.',
         msgFilesTooMany: 'Počet vybraných souborů <b>({n})</b> překročil maximální povolený limit <b>{m}</b>.',
         msgTotalFilesTooMany: 'Můžete nahrát maximálně <b>{m}</b> souborů (bylo nalezeno <b>{n}</b> souborů).',
@@ -77,7 +66,6 @@
         msgLoading: 'Nahrávání souboru {index} z {files} &hellip;',
         msgProgress: 'Nahrávání souboru {index} z {files} - {name} - {percent}% dokončeno.',
         msgSelected: '{n} {files} vybráno',
-        msgProcessing: 'Zpracovávám ...',
         msgFoldersNotAllowed: 'Táhni a pusť pouze soubory! Vynechané {n} pustěné složk(y).',
         msgImageWidthSmall: 'Šířka obrázku "{name}", musí být alespoň {size} px.',
         msgImageHeightSmall: 'Výška obrázku "{name}", musí být alespoň {size} px.',
@@ -87,7 +75,7 @@
         msgImageResizeException: 'Chyba při změně velikosti obrázku.<pre>{errors}</pre>',
         msgAjaxError: 'Došlo k chybě v {operation}. Prosím zkuste to znovu později!',
         msgAjaxProgressError: '{operation} - neúspěšné',
-        msgDuplicateFile: 'Soubor "{name}" stejné velikosti "{size}" už byl vybrán dříve. Přeskočení duplicitního výběru.',
+        msgDuplicateFile: 'Soubor "{name}" stejné velikosti "{size} KB" už byl vybrán dříve. Přeskočení duplicitního výběru.',
         msgResumableUploadRetriesExceeded:  'Nahrávání bylo přerušeno po <b>{max}</b> opakováních souboru <b>{file}</b>! Detaily chyby: <pre>{error}</pre>',
         msgPendingTime: '{time} zůstává',
         msgCalculatingTime: 'výpočet zbývajícího času',
@@ -121,4 +109,4 @@
             close: 'Zavřít detailní náhled'
         }
     };
-}));
+})(window.jQuery);

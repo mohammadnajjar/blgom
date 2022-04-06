@@ -1,5 +1,5 @@
 /*!
- * bootstrap-fileinput v5.2.8
+ * bootstrap-fileinput v5.1.3
  * http://plugins.krajee.com/file-input
  *
  * Krajee Explorer Font Awesome theme configuration for bootstrap-fileinput.
@@ -7,21 +7,12 @@
  * font awesome assets and CSS are loaded on the page as well.
  *
  * Author: Kartik Visweswaran
- * Copyright: 2014 - 2022, Kartik Visweswaran, Krajee.com
+ * Copyright: 2014 - 2020, Kartik Visweswaran, Krajee.com
  *
  * Licensed under the BSD-3-Clause
  * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'],factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     'use strict';
     $.fn.fileinputThemes['explorer-fas'] = {
         layoutTemplates: {
@@ -62,8 +53,8 @@
             indicatorPaused: '<i class="fa fa-pause text-info"></i>'
         },
         previewZoomButtonIcons: {
-            prev: '<i class="fas fa-chevron-left"></i>',
-            next: '<i class="fas fa-chevron-right"></i>',
+            prev: '<i class="fas fa-caret-left fa-lg"></i>',
+            next: '<i class="fas fa-caret-right fa-lg"></i>',
             toggleheader: '<i class="fas fa-fw fa-arrows-alt-v"></i>',
             fullscreen: '<i class="fas fa-fw fa-arrows-alt"></i>',
             borderless: '<i class="fas fa-fw fa-external-link-alt"></i>',
@@ -77,4 +68,4 @@
         uploadIcon: '<i class="fas fa-upload"></i>',
         msgValidationErrorIcon: '<i class="fas fa-exclamation-circle"></i> '
     };
-}));
+})(window.jQuery);

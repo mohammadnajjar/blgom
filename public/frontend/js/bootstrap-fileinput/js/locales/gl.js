@@ -8,21 +8,10 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        factory(require('jquery'));
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+(function ($) {
     "use strict";
 
     $.fn.fileinputLocales['gl'] = {
-        sizeUnits: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'], 
-        bitRateUnits: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],
         fileSingle: 'arquivo',
         filePlural: 'arquivos',
         browseLabel: 'Examinar &hellip;',
@@ -41,8 +30,8 @@
         msgPlaceholder: 'Seleccinar {files} ...',
         msgZoomModalHeading: 'Vista previa detallada',
         msgFileRequired: 'Debes seleccionar un arquivo para subir.',
-        msgSizeTooSmall: 'O arquivo "{name}" (<b>{size}</b>) é demasiado pequeno e debe ser maior de <b>{minSize}</b>.',
-        msgSizeTooLarge: 'O arquivo "{name}" (<b>{size}</b>) excede o tamaño máximo permitido de <b>{maxSize}</b>.',
+        msgSizeTooSmall: 'O arquivo "{name}" (<b>{size} KB</b>) é demasiado pequeno e debe ser maior de <b>{minSize} KB</b>.',
+        msgSizeTooLarge: 'O arquivo "{name}" (<b>{size} KB</b>) excede o tamaño máximo permitido de <b>{maxSize} KB</b>.',
         msgFilesTooLess: 'Debe seleccionar ao menos <b>{n}</b> {files} a cargar.',
         msgFilesTooMany: 'O número de arquivos seleccionados a cargar <b>({n})</b> excede do límite máximo permitido de <b>{m}</b>.',
         msgTotalFilesTooMany: 'You can upload a maximum of <b>{m}</b> files (<b>{n}</b> files detected).',
@@ -77,7 +66,6 @@
         msgLoading: 'Subindo arquivo {index} de {files} &hellip;',
         msgProgress: 'Subindo arquivo {index} de {files} - {name} - {percent}% completado.',
         msgSelected: '{n} {files} seleccionado(s)',
-        msgProcessing: 'Processing ...',
         msgFoldersNotAllowed: 'Arrastra e solta unicamente arquivos. Omitida(s) {n} carpeta(s).',
         msgImageWidthSmall: 'O ancho da imaxe "{name}" debe ser de ao menos {size} px.',
         msgImageHeightSmall: 'A altura da imaxe "{name}" debe ser de ao menos {size} px.',
@@ -87,7 +75,7 @@
         msgImageResizeException: 'Erro ao cambiar o tamaño da imaxe. <pre>{errors}</pre>',
         msgAjaxError: 'Algo foi mal ca operación {operation}. Por favor, inténtao de novo máis tarde.',
         msgAjaxProgressError: 'A operación {operation} fallou',
-        msgDuplicateFile: 'File "{name}" of same size "{size}" has already been selected earlier. Skipping duplicate selection.',
+        msgDuplicateFile: 'File "{name}" of same size "{size} KB" has already been selected earlier. Skipping duplicate selection.',
         msgResumableUploadRetriesExceeded:  'Upload aborted beyond <b>{max}</b> retries for file <b>{file}</b>! Error Details: <pre>{error}</pre>',
         msgPendingTime: '{time} remaining',
         msgCalculatingTime: 'calculating time remaining',
@@ -121,4 +109,4 @@
             close: 'Cerrar vista detallada'
         }
     };
-}));
+})(window.jQuery);

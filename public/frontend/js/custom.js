@@ -1,5 +1,5 @@
 $(function () {
-    $('#alert_message').fadeTo(5000, 50).slideUp(500, function () {
-        $('#alert_message').slideUp(500);
+    $("#alert-message").fadeTo(5000, 500).slideUp(500, function () {
+        $('#alert-message').slideUp(500);
     });
 });
