@@ -5293,6 +5293,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5307,10 +5308,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getNotifications();
     var userId = $('meta[name="userId"]').attr('content');
     Echo["private"]('App.Models.User.' + userId).notification(function (notification) {
-      console.log('Yee');
-      console.log(notification);
-
-      _this.unread.unshift(notification);
+      _this.read.unshift(notification);
 
       _this.unreadCount++;
     });
@@ -5319,7 +5317,7 @@ __webpack_require__.r(__webpack_exports__);
     getNotifications: function getNotifications() {
       var _this2 = this;
 
-      axios.get('user/notificatiosn/get').then(function (res) {
+      axios.get('user/notifications/get').then(function (res) {
         _this2.read = res.data.read;
         _this2.unread = res.data.unread;
         _this2.unreadCount = res.data.unread.length;
@@ -47709,23 +47707,25 @@ var render = function () {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "content" }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "edit-comment/" + item.data.id },
-                            on: {
-                              click: function ($event) {
-                                return _vm.readNotifications(item)
+                        _c("h6", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "edit-comment/" + item.data.id },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.readNotifications(item)
+                                },
                               },
                             },
-                          },
-                          [
-                            _vm._v(
-                              "You have new\n                                comment on your post: " +
-                                _vm._s(item.data.post_title)
-                            ),
-                          ]
-                        ),
+                            [
+                              _vm._v(
+                                "You have\n                                new comment on your post: " +
+                                  _vm._s(item.data.post_title)
+                              ),
+                            ]
+                          ),
+                        ]),
                       ]),
                     ]
                   )

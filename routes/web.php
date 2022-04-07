@@ -29,10 +29,9 @@ Route::post('email/resend', [VerificationController::class, 'resend'])->name('ve
 
 Route::group(['middleware' => 'verified'], function () {
     Route::get('/dashboard', [UsersController::class, 'index'])->name('dashboard');
-
-    Route::any('user/notification/get', [NotificationController::class, 'getNotifications']);
-    Route::any('user/notification/read', [NotificationController::class, 'markAsRead']);
-    Route::any('user/notification/read/{id}', [NotificationController::class, 'markAsReadAndRedirect']);
+    Route::any('user/notifications/get', [NotificationController::class, 'getNotification']);
+    Route::any('user/notifications/read', [NotificationController::class, 'markAsRead']);
+    Route::any('user/notifications/read/{id}', [NotificationController::class, 'markAsReadAndRedirect']);
 
 
     Route::get('/create_post', [UsersController::class, 'create_post'])->name('users.create_post');

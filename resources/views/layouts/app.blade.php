@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="userId" content="{{ auth()->check() ? auth()->id() : '' }}">
-
-
+    <meta name="userId" content="{{ auth()->check()?auth()->id():"" }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicons -->
@@ -28,7 +26,7 @@
     <link href="{{ asset('frontend/js/bootstrap-fileinput/css/fileinput.min.css') }}" media="all" rel="stylesheet"
           type="text/css"/>
 
-    <link rel="stylesheet" href="{{asset('frontend/css/custom.css')}}">
+
     <!-- Modernizer js -->
     <script src="{{ asset('frontend/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 
@@ -79,7 +77,6 @@
 
 <script src="{{ asset('frontend/js/bootstrap-fileinput/js/plugins/piexif.min.js') }}"></script>
 <script src="{{ asset('frontend/js/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
-<script src="{{ asset('frontend/js/bootstrap-fileinput/js/plugins/purify.min.js') }}"></script>
 
 <script src="{{ asset('frontend/js/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
 <script src="{{ asset('frontend/js/bootstrap-fileinput/themes/fa/theme.js') }}"></script>

@@ -88,7 +88,8 @@ class NewCommentForPostOwnerNotify extends Notification implements ShouldQueue, 
                 'post_title' => $this->comment->post->title,
                 'post_slug' => $this->comment->post->slug,
                 'created_at' => $this->comment->created_at->format('d M, Y h:i a'),
-            ]
+            ],
+
         ]);
     }
 }
