@@ -202,11 +202,16 @@ class UsersController extends Controller
         ]);
     }
 
-    public function show_comments()
+    public function show_comments(Request $request)
     {
-        $posts_id = auth()->user()->posts()->pluck('id')->toArray();
-        $comments = Comment::whereIn('post_id', $posts_id)->orderBy('id', 'desc')->paginate(10);
-
+        $comments = Comment::query();
+        if (isset($request->post) && $request->post != '') {
+            $comments = $comments->wherePostId($request->post);
+        } else {
+            $posts_id = auth()->user()->posts()->pluck('id')->toArray();
+            $comments = Comment::whereIn('post_id', $posts_id);
+        }
+        $comments = $comments->orderBy('id', 'desc')->paginate(10);
         return view('frontend.users.comments', compact('comments'));
     }
 
@@ -269,7 +274,7 @@ class UsersController extends Controller
         $comment = Comment::whereId($comment_id)->whereHas('post', function ($query) {
             $query->where('posts.user_id', auth()->id());
         })->first();
-   
+
         if ($comment) {
             $comment->delete();
             Cache::Forget('recent_comment');

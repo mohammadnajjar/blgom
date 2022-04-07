@@ -38,12 +38,24 @@ export default {
     created: function () {
         this.getNotifications();
         let userId = $('meta[name="userId"]').attr('content');
-        Echo.private('App.Models.User.' + userId)
-            .notification((notification) => {
-                this.read.unshift(notification);
-                this.unreadCount++;
-            });
+        if (userId != '') {
+            this.getNotifications();
+            Echo.private('App.Models.User.' + userId)
+                .notification((notification) => {
+                    this.unread.unshift(notification);
+                    this.unreadCount++;
+                });
+        }
     },
+    // created: function () {
+    //     this.getNotifications();
+    //     let userId = $('meta[name="userId"]').attr('content');
+    //     Echo.private('App.Models.User.' + userId)
+    //         .notification((notification) => {
+    //             this.read.unshift(notification);
+    //             this.unreadCount++;
+    //         });
+    // },
     methods: {
         getNotifications() {
             axios.get('user/notifications/get').then(res => {

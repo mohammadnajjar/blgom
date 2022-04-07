@@ -50,7 +50,7 @@ class NewCommentForPostOwnerNotify extends Notification implements ShouldQueue, 
     {
         return (new MailMessage)
             ->line('There is new comment from' . $this->comment->name . 'on your post' . $this->comment->post->title)
-            ->action('Go to your post', route('post.show', $this->comment->post->slug))
+            ->action('Go to Comment', route('users.edit.comment', $this->comment->id))
             ->line('Thank you for using Blogm System!');
     }
 
@@ -75,7 +75,7 @@ class NewCommentForPostOwnerNotify extends Notification implements ShouldQueue, 
         ];
     }
 
-    public function toBroadcast($notifiable)
+    public function toBroadcast($notifiable): BroadcastMessage
     {
         return new BroadcastMessage([
             'data' => [

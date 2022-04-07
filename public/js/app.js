@@ -5305,14 +5305,26 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.getNotifications();
     var userId = $('meta[name="userId"]').attr('content');
-    Echo["private"]('App.Models.User.' + userId).notification(function (notification) {
-      _this.read.unshift(notification);
 
-      _this.unreadCount++;
-    });
+    if (userId != '') {
+      this.getNotifications();
+      Echo["private"]('App.Models.User.' + userId).notification(function (notification) {
+        _this.unread.unshift(notification);
+
+        _this.unreadCount++;
+      });
+    }
   },
+  // created: function () {
+  //     this.getNotifications();
+  //     let userId = $('meta[name="userId"]').attr('content');
+  //     Echo.private('App.Models.User.' + userId)
+  //         .notification((notification) => {
+  //             this.read.unshift(notification);
+  //             this.unreadCount++;
+  //         });
+  // },
   methods: {
     getNotifications: function getNotifications() {
       var _this2 = this;
