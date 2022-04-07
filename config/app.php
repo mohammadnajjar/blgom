@@ -179,6 +179,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
         PrettyRoutes\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+
+
     ],
 
     /*
@@ -234,8 +237,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Entrust' => Mindscms\Entrust\EntrustFacade::class,
-        'Image' => Intervention\Image\Facades\Image::class
-
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
     ],
 
 ];

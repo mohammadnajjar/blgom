@@ -71,6 +71,16 @@ class Post extends Model
         ];
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('post_status', 1);
+    }
+
+    public function scopePost($query)
+    {
+        return $query->where('post_type', 'post');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

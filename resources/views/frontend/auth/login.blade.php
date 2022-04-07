@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app-auth')
+
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6 offset-md-3">
+            <div class="col-lg-6">
                 <div class="my__account__wrapper mt-3">
                     <h3 class="account__title">Login</h3>
                     {!! Form::open(['route' => 'login','method'=>'post'])
