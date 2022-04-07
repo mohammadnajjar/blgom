@@ -1,38 +1,65 @@
 <template>
-
-    <div class="block-minicart minicart__active">
-        <div class="minicart-content-wrapper">
-            <div class="micart__close">
-                <span>close</span>
-            </div>
-            <div class="single__items">
-                <div class="miniproduct">
-                    <div class="item01 d-flex mt--20">
-                        <div class="thumb">
-                            <a href="product-details.html"><img
-                                alt="product
-                                                images"
-                                src="/Frontend/images/product/sm-img/3.jpg"></a>
-                        </div>
-                        <div class="content">
-                            <h6><a href="product-details.html">Impulse Duffle</a></h6>
-                            <span class="prize">$40.00</span>
-                            <div class="product_prize d-flex justify-content-between">
-                                <span class="qun">Qty: 03</span>
-                                <ul class="d-flex justify-content-end">
-                                    <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-                                </ul>
+    <li class="shopcart">
+        <a class="cartbox_active" href="#">
+            <span v-if="unreadCount > 0" class="product_qun">{{ unreadCount }}</span>
+        </a>
+        <div class="block-minicart minicart__active">
+            <div v-if="unreadCount > 0" class="minicart-content-wrapper">
+                <div class="single__items">
+                    <div class="miniproduct">
+                        <div v-for="item in unread" :key="item.id" class="item01 d-flex mt--20">
+                            <div class="thumb">
+                                <a :href="`edit-comment/${item.data.id}`" @click="readNotifications(item)">
+                                    <img alt="`${item.data.post_title}`" src="/frontend/images/icons/comment.png">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <a :href="`edit-comment/${item.data.id}`" @click="readNotifications(item)">You have new
+                                    comment on your post: {{ item.data.post_title }}</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </li>
 </template>
 
 <script>
-export default {}
+export default {
+    data: function () {
+        return {
+            read: {},
+            unread: {},
+            unreadCount: 0,
+        }
+    },
+    created: function () {
+        this.getNotifications();
+        let userId = $('meta[name="userId"]').attr('content');
+        Echo.private('App.Models.User.' + userId)
+            .notification((notification) => {
+                console.log('Yee');
+                console.log(notification);
+                this.unread.unshift(notification);
+                this.unreadCount++;
+            });
+    },
+    methods: {
+        getNotifications() {
+            axios.get('user/notificatiosn/get').then(res => {
+                this.read = res.data.read;
+                this.unread = res.data.unread;
+                this.unreadCount = res.data.unread.length;
+            }).catch(error => Exception.handle(error))
+        },
+        readNotifications(notification) {
+            axios.post('user/notifications/read', {id: notification.id}).then(res => {
+                this.unread.splice(notification, 1);
+                this.read.push(notification);
+                this.unreadCount--;
+            })
+        }
+    }
+}
 </script>

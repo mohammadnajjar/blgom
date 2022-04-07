@@ -63,6 +63,7 @@ class NewCommentForPostOwnerNotify extends Notification implements ShouldQueue, 
     public function toDatabase($notifiable)
     {
         return [
+            'id' => $this->comment->id,
             'name' => $this->comment->name,
             'email' => $this->comment->email,
             'url' => $this->comment->url,
@@ -78,6 +79,7 @@ class NewCommentForPostOwnerNotify extends Notification implements ShouldQueue, 
     {
         return new BroadcastMessage([
             'data' => [
+                'id' => $this->comment->id,
                 'name' => $this->comment->name,
                 'email' => $this->comment->email,
                 'url' => $this->comment->url,
@@ -86,8 +88,7 @@ class NewCommentForPostOwnerNotify extends Notification implements ShouldQueue, 
                 'post_title' => $this->comment->post->title,
                 'post_slug' => $this->comment->post->slug,
                 'created_at' => $this->comment->created_at->format('d M, Y h:i a'),
-            ],
-
+            ]
         ]);
     }
 }

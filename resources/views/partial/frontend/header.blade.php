@@ -34,9 +34,9 @@
             <div class="col-md-8 col-sm-8 col-5 col-lg-2">
                 <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                     <li class="shop_search"><a class="search__active" href="#"></a></li>
-                    <li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
-                        <user-notification></user-notification>
-                    </li>
+
+                    <user-notification></user-notification>
+
                     <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
                         <div class="searchbar__content setting__block">
                             <div class="content-inner">

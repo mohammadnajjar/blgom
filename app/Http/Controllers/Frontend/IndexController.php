@@ -82,7 +82,7 @@ class IndexController extends Controller
             $data['user_id'] = $userId;
             $comment = $post->comments()->create($data);
             if ($comment) {
-                if (auth()->guest() || auth()->user()->id != $post->user_id) {
+                if (auth()->user()->id || auth()->guest() != $post->user_id) {
                     $post->user->notify(new NewCommentForPostOwnerNotify($comment));
 
                 }

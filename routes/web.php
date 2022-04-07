@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\Auth\VerificationController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UsersController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,6 +29,12 @@ Route::post('email/resend', [VerificationController::class, 'resend'])->name('ve
 
 Route::group(['middleware' => 'verified'], function () {
     Route::get('/dashboard', [UsersController::class, 'index'])->name('dashboard');
+
+    Route::any('user/notification/get', [NotificationController::class, 'getNotifications']);
+    Route::any('user/notification/read', [NotificationController::class, 'markAsRead']);
+    Route::any('user/notification/read/{id}', [NotificationController::class, 'markAsReadAndRedirect']);
+
+
     Route::get('/create_post', [UsersController::class, 'create_post'])->name('users.create_post');
     Route::post('/store_post', [UsersController::class, 'store_post'])->name('users.store_post');
     Route::get('/edit-post/{post_id}', [UsersController::class, 'edit_post'])->name('users.edit.post');
