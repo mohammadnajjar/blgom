@@ -205,6 +205,7 @@ class UsersController extends Controller
     public function show_comments(Request $request)
     {
         $comments = Comment::query();
+
         if (isset($request->post) && $request->post != '') {
             $comments = $comments->wherePostId($request->post);
         } else {

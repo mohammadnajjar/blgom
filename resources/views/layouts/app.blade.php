@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
     <link href="{{ asset('frontend/js/bootstrap-fileinput/css/fileinput.min.css') }}" media="all" rel="stylesheet"
@@ -72,6 +73,9 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
 <!-- JS Files -->
+<script src="{{ asset('frontend/js/vendor/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('frontend/js/popper.min.js') }}"></script>
+<script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('frontend/js/plugins.js') }}"></script>
 <script src="{{ asset('frontend/js/active.js') }}"></script>
 
